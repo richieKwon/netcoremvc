@@ -1,0 +1,4 @@
+[form]
+The form tag is linked to the asp-action in the asp-controller 
+asp-controller 
+asp-action 
