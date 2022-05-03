@@ -20,14 +20,14 @@ namespace NetCore.Services.SVCS
                     UserId = "Richie",
                     UserName = "YeraLee",
                     UserEmail = "yera@gmail.com",
-                    Password = "1234"
+                    Password = "1234567"
                 }
             };
         }
 
         private bool CheckTheUserInfo(string userId, string password)
         {
-            return GetUserInfos().Where(u=>u.UserId.Equals(userId) && u.Password.Equals(password)).Any();
+            return GetUserInfos().Any(u => u.UserId.Equals(userId) && u.Password.Equals(password));
         }
 
         #endregion
