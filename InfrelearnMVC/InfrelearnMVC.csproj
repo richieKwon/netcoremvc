@@ -18,4 +18,9 @@
         <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="5.0.2" />
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\NetCore.Data\NetCore.Data.csproj" />
+      <ProjectReference Include="..\NetCore.Services\NetCore.Services.csproj" />
+    </ItemGroup>
+
 </Project>

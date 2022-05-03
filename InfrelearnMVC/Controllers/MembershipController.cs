@@ -5,11 +5,16 @@ using System.Threading.Tasks;
 using InfrelearnMVC.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.VisualStudio.Web.CodeGeneration.Contracts.Messaging;
+using NetCore.Data.ViewModels;
+using NetCore.Services.Interfaces;
+using NetCore.Services.SVCS;
+
 
 namespace InfrelearnMVC.Controllers
 {
     public class MembershipController : Controller
     {
+        private IUser _user = new UserService();
         public IActionResult Index()
         {
             return View();
@@ -34,7 +39,8 @@ namespace InfrelearnMVC.Controllers
                 const string userId = "richie";
                 const string password = "123456";
 
-                if (loginInfo.UserId.Equals(userId) && loginInfo.Password.Equals(password))
+                // if (loginInfo.UserId.Equals(userId) && loginInfo.Password.Equals(password))
+                if (_user.MatchTheUserInfo(loginInfo))
                 {
                     TempData["Message"] = "Successful";
                     return RedirectToAction("Index", "Membership");
