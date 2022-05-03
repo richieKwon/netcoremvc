@@ -11,6 +11,7 @@
     <div class="col-md-4">
         
         <form method="Post" asp-controller="Membership" asp-action="Login">
+            <div class="text-danger" asp-validation-summary="All"></div>
 
             <div class="form-group">
                 @Html.DisplayNameFor(m => m.UserId)
@@ -24,6 +25,7 @@
                        placeholder="PassWord"/>
                 <span class="text-danger" asp-validation-for="Password"></span>
             </div>
+            <button type="submit" name="btnLogin" class="btn btn-lg btn-success btn-block">Membership Login</button>
 
         </form>
     </div>
