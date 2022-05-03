@@ -14,7 +14,13 @@ namespace InfrelearnMVC.Controllers
 {
     public class MembershipController : Controller
     {
-        private IUser _user = new UserService();
+        private readonly IUser _user;
+
+
+        public MembershipController(IUser user)
+        {
+            _user = user;
+        }
         public IActionResult Index()
         {
             return View();
