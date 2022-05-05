@@ -8,4 +8,9 @@
       <ProjectReference Include="..\NetCore.Data\NetCore.Data.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.9" />
+      <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="5.0.9" />
+    </ItemGroup>
+
 </Project>
