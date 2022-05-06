@@ -33,7 +33,7 @@ namespace InfrelearnMVC
             services.AddDbContext<CodeFirstDbContext>(options =>
                 options.UseSqlite(
                     Configuration.GetConnectionString("DefaultConnection"),
-                    sqliteOptionsAction:mig=>mig.MigrationsAssembly(assemblyName:"NetCore.Migrations")));
+                     sqliteOptionsAction:mig=>mig.MigrationsAssembly(assemblyName:"NetCore.Services")));
             services.AddDatabaseDeveloperPageExceptionFilter();
 
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
