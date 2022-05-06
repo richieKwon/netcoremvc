@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -22,6 +23,10 @@ namespace NetCore.Data.DataModels
         public bool IsMembershipWithdrawn { get; set; }
 
         [Required]
-        public DateTime JoinedUtcDate { get; set; }
+        public DateTime JoinedUtcDate { get; set; } 
+        
+        // Foreign Key
+        [ForeignKey("UserId")]
+        public virtual ICollection<UserRolesByUser> UserRolesByUsers { get; set; }
     }
 }

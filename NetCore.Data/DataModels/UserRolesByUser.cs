@@ -14,5 +14,9 @@ namespace NetCore.Data.DataModels
         
         [Required]
         public DateTime OwnedUtcDate { get; set; }
+
+        public virtual User User { get; set; }
+
+        public virtual UserRole UserRole { get; set; }
     }
 }

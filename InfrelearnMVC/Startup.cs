@@ -12,6 +12,7 @@ using InfrelearnMVC.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using NetCore.Services.Data;
 using NetCore.Services.Interfaces;
 using NetCore.Services.SVCS;
 
@@ -29,9 +30,10 @@ namespace InfrelearnMVC
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<ApplicationDbContext>(options =>
+            services.AddDbContext<CodeFirstDbContext>(options =>
                 options.UseSqlite(
-                    Configuration.GetConnectionString("DefaultConnection")));
+                    Configuration.GetConnectionString("DefaultConnection"),
+                    sqliteOptionsAction:mig=>mig.MigrationsAssembly(assemblyName:"NetCore.Migrations")));
             services.AddDatabaseDeveloperPageExceptionFilter();
 
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
