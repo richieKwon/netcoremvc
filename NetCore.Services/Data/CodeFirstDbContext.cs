@@ -17,6 +17,8 @@ namespace NetCore.Services.Data
 
         // Db table List
         public DbSet<User> Users { get; set; }
+        public DbSet<UserRole> UserRoles { get; set; }
+        public DbSet<UserRolesByUser> UserRolesByUsers { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
