@@ -1,3 +1,4 @@
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 
 namespace NetCore.Services.Data
@@ -6,7 +7,9 @@ namespace NetCore.Services.Data
     {
         public CodeFirstDbContext CreateDbContext(string[] args)
         {
-            throw new System.NotImplementedException();
+            var optionsBuilder = new DbContextOptionsBuilder<CodeFirstDbContext>();
+            optionsBuilder.UseSqlite("");
+            return new CodeFirstDbContext(optionsBuilder.Options);
         }
     }
 }
