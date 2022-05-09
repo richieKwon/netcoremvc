@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
@@ -9,6 +10,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.EntityFrameworkCore;
 using InfrelearnMVC.Data;
+using Microsoft.AspNetCore.DataProtection;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -41,6 +43,10 @@ namespace InfrelearnMVC
             services.AddControllersWithViews();
             // inject UserService to IUser 
             services.AddScoped<IUser, UserService>();
+            services.AddDataProtection().   
+                PersistKeysToFileSystem(new DirectoryInfo(@"\\server\shared\directory\")).
+                SetDefaultKeyLifetime(TimeSpan.FromDays(14)).
+                SetApplicationName("NetCore");   
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
