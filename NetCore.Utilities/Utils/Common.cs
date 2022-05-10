@@ -10,7 +10,7 @@ namespace NetCore.Utilities.Utils
         {
             var builder = services.AddDataProtection()
                 .PersistKeysToFileSystem(new DirectoryInfo(@""))
-                .SetDefaultKeyLifetime(TimeSpan.FromDays(7))
+                .SetDefaultKeyLifetime(TimeSpan.FromDays(7))    
                 .SetApplicationName("NetCore");
             switch (cryptoType)
             {
@@ -19,7 +19,7 @@ namespace NetCore.Utilities.Utils
                 case Enums.CryptoType.Managed:
                     break;
             }
-        } 
+        }  
         
     } 
 }

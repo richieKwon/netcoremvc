@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.EntityFrameworkCore;
 using InfrelearnMVC.Data;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.DataProtection;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -46,7 +47,14 @@ namespace InfrelearnMVC
             services.AddDataProtection().   
                 PersistKeysToFileSystem(new DirectoryInfo(@"\\server\shared\directory\")).
                 SetDefaultKeyLifetime(TimeSpan.FromDays(14)).
-                SetApplicationName("NetCore");   
+                SetApplicationName("NetCore");
+            services.AddAuthentication(defaultScheme:CookieAuthenticationDefaults.AuthenticationScheme)
+                .AddCookie(options=>
+                {
+                    options.AccessDeniedPath = "/Membership/Forbidden";
+                    options.LoginPath = "/Membership/Login";
+                });
+            services.AddAuthorization();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
